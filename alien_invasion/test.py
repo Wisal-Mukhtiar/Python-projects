@@ -151,7 +151,7 @@ class AlienInvasion:
         for bullet in self.bullets.copy():
             if bullet.rect.bottom <= 0:
                 self.bullets.remove(bullet)
-        print(len(self.bullets))
+
 
         self._check_bullet_alien_collision()
 
@@ -163,6 +163,11 @@ class AlienInvasion:
             # destroy existing bullets and create new fleet
             self.bullets.empty()
             self._create_fleet()
+            self.settings.increase_speed()
+
+            #increase level
+            self.stats.level += 1
+            self.sb.prep_level()
 
         if collisions:
             for aliens in collisions.values():

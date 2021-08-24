@@ -11,6 +11,7 @@ class GameStats:
 
         # scores
         self.score = 0
+        self.level = 1
 
         # high score should never be reset
         self.high_score = 0
