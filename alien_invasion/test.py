@@ -24,6 +24,7 @@ class AlienInvasion:
         self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
+
         self.aliens = pygame.sprite.Group()
 
         self._create_fleet()
@@ -62,6 +63,7 @@ class AlienInvasion:
             self._check_events()
             self.ship.update()
             self._update_bullets()
+            self._update_aliens()
             self._update_screen()
 
             # get rid of the disappeared bullets
@@ -107,6 +109,25 @@ class AlienInvasion:
     def _update_bullets(self):
         """update the bullets position and get rid of old ones"""
         self.bullets.update()
+
+    def _update_aliens(self):
+        """check if the fleet is at an edge,
+        then update the positions of aliens accordingly """
+        self._check_fleet_edges()
+        self.aliens.update()
+
+    def _check_fleet_edges(self):
+        """Respond appropriately if any aliens have reached an edge"""
+        for alien in self.aliens.sprites():
+            if alien.check_edges():
+                self.change_fleet_direction()
+                break
+
+    def change_fleet_direction(self):
+        """Drop the entire fleet and change the fleet's direction"""
+        for alien in self.aliens.sprites():
+            alien.rect.y += self.settings.fleet_drop_speed
+        self.settings.fleet_direction *= -1
 
     def _update_screen(self):
         # color the background
