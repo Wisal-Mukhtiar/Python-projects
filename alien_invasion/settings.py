@@ -23,3 +23,6 @@ class Settings:
         # fleet direction of 1 represents right -1 rep left
         self.fleet_direction = 1
 
+
+        # game stats
+        self.ship_limit = 3
