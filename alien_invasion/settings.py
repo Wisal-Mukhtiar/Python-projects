@@ -1,4 +1,4 @@
-"""this module will contain the settings for alien invasion"""
+"""this module will contain the settings for all other modules"""
 
 
 class Settings:
