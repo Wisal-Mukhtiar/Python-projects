@@ -1,4 +1,5 @@
-"""the main module"""
+"""the main module containing all the necessary imports and configuration
+"""
 
 import sys
 
