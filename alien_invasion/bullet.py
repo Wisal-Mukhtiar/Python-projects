@@ -1,3 +1,5 @@
+"""module contain configuaration of the bullets fired by the ship"""
+
 import pygame
 from pygame.sprite import Sprite
 
