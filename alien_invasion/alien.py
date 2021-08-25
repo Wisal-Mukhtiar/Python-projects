@@ -1,3 +1,5 @@
+"""module contain configuration about aliens in the game"""
+
 import pygame
 from pygame.sprite import Sprite
 
