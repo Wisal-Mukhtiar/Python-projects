@@ -1,3 +1,5 @@
+"""module stores the statistics like scores levels etc"""
+
 class GameStats:
     """Track statistics for alien Invasion"""
 
