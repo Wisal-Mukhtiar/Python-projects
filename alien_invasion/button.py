@@ -1,3 +1,4 @@
+"""Module contain the buttons on the game screen"""
 import pygame.font
 
 
