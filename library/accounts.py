@@ -1,29 +1,36 @@
-""""user information via this module """
+"""this module will manage the accounts information, librarian or member"""
+
 from enum import Enum
 
-
-class AccountStatus(Enum):
-    active, closed, cancel, blacklisted, NONE = 1, 2 , 3 , 4 ,5
+class IdStatus(Enum):
+    none, active, blocked, blacklisted, cancelled = 0, 1, 2, 3, 4,
 
 
 class Account:
-    """class contain all the info regarding user"""
-
-    def __init__(self, name, email, password, account_status):
+    """General account
+    Librarian and member will be inherited
+    """
+    def __init__(self, name, email, phone, id_status):
         self.name = name
         self.email = email
-        self.password = password
-        self.account_status = None
-
-class Admin(Account):
-    """administrator of the library may be more than one """
-
-    def __init__(self, name, email, password, account_status= ):
-
-        super().__init__(name, email, password,)
+        self.phone = phone
+        self.id_status = id_status
+        self.id = None
+        self.password = None
 
 
+class Librarian(Account):
+    """this class will store the librarian data"""
+    def __int__(self, name, email, phone, admin_id, id_status=IdStatus.active):
+        super().__init__(name, email, phone, id_status)
+        self.id = admin_id
+
+
+class MemberAccount(Account):
+    def __init__(self, name, email, phone, member_id, id_status=IdStatus.active):
+        super().__init__(name, email, phone, id_status)
+        self.id = member_id
+        self.books_issued = []
 
 
 
-    def add_book(self):

@@ -1,12 +1,20 @@
-"""The books in the management system are represented via this module"""
+"""module contain info about books of library"""
 
 
 class Books:
-    """All the operations of library class"""
+    """Books class containing book information and stats"""
 
-    def __init__(self, name, isbn, author, publishers):
+    def __init__(self, name, author_name, publisher, accession_number):
         self.name = name
-        self.isbn = isbn
-        self.author = author
-        self.publishers = publishers
-        self.accession_number = None  # unique number assigned to each book for record track
+        self.author_name = author_name
+        self.publisher = publisher
+        self.accession_number = accession_number
+
+    def add_book(self):
+        self.name = input("Enter book name : ")
+        self.author_name = input("Enter author's name:  ")
+        self.publisher = input("Enter publisher's name")
+
+    def remove_book(self):
+        remove_book_isbn = input("Enter isbn of the book: ")
+        remove_book_accNum = input("Enter the acession number of the book to be removed : ")
