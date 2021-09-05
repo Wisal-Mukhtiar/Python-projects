@@ -10,9 +10,20 @@ c.execute("""CREATE TABLE books(
     Author TEXT,
     ISBN    INTEGER,
     Publishers TEXT,
-    Book_id TEXT,
+    Accession_number INTEGER,
     copies_available INTEGER
 )""")
+
+c.execute("""CREATE TABLE books_storage(
+    Name TEXT,
+    Author TEXT,
+    ISBN    INTEGER,
+    Publishers TEXT,
+    Accession_id TEXT,
+    FOREIGN KEY(ISBN) REFERENCES books(ISBN) ON DELETE SET NULL 
+)""")
+        
+
 
 # librarian account table
 c.execute("""CREATE TABLE librarian(
@@ -39,16 +50,16 @@ c.execute("""CREATE TABLE member(
 # ISSUED BOOKS TABLE
 c.execute("""CREATE TABLE issued_books(
     issued_member_id TEXT,
-    book1_id TEXT,
-    book2_id TEXT,
-    book3_id TEXT,
-    book4_id TEXT,
-    book5_id TEXT,
-    book6_id TEXT,
-    book7_id TEXT,
-    book8_id TEXT,
-    book9_id TEXT,
-    book10_id TEXT,
+    book1_accession_number TEXT,
+    book2_accession_number TEXT,
+    book3_accession_number TEXT,
+    book4_accession_number TEXT,
+    book5_accession_number TEXT,
+    book6_accession_number TEXT,
+    book7_accession_number TEXT,
+    book8_accession_number TEXT,
+    book9_accession_number TEXT,
+    book10_accession_number TEXT,
     FOREIGN KEY(issued_member_id) REFERENCES member(member_id) ON DELETE SET NULL
 )""")
 
