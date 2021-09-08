@@ -1,56 +1,56 @@
-"""this module will manage the accounts information, librarian or member"""
-
-from enum import Enum
+"""GENERAL ACCOUNT, LIBRARIAN AND MEMEBER ACCOUNT ETC"""
+import sqlite3
 
 from books import Book
 
+conn = sqlite3.connect("library_database.sqlite3")
 
-class IdStatus(Enum):
-    none, active, blocked, blacklisted, cancelled = 0, 1, 2, 3, 4,
+c = conn.cursor()
+
 
 
 class Account:
-    """General account
-    Librarian and member will be inherited
-    """
-    def __init__(self, name, email, phone, id_status):
-        self.name = name
-        self.email = email
-        self.phone = phone
-        self.id_status = id_status
-        self.id = None
+    """this is general account class, librarian and member will be inherited"""
+
+    def __init__(self):
+        self.name = None
+        self.email = None
+        self.phone = None
         self.password = None
 
 
-class Librarian(Account):
-    """this class will store the librarian data"""
-    def __int__(self, name, email, phone, admin_id, id_status=IdStatus.active):
-        super().__init__(name, email, phone, id_status)
-        self.id = admin_id
-        self.book = Book()
-        self.member = MemberAccount()
+class LibrarianAccount(Account):
+    """The librarian account"""
 
-    def add_book(self):
-        self.book.name = input("enter book name : ")
-        self.book.authors = input("Enter author's names with a comma and space : ").split(', ')
-        self.book.publisher = input("Enter book publishers : ")
+    def __init__(self):
+        super().__init__()
+        librarian_id = None
+        password = None
 
-    def Remove_book(self):
-        # well enter the accession or isbn number of the book to remove that book
-        pass
-
-    def add_member_account(self):
+    def create_librarian_account(self):
+        self.name = input("Enter your name : ")
+        self.email = input("Enter your email address : ")
+        self.phone = int(input("Enter your phone number : "))
+        self.id = self._generate_librarian_id()
 
 
-
+    def _generate_librarian_id(self):
+        c.execute("""""")
 
 
 
 class MemberAccount(Account):
-    def __init__(self, name, email, phone, member_id, id_status=IdStatus.active):
-        super().__init__(name, email, phone, id_status)
-        self.id = member_id
-        self.books_issued = []
+    """The Member account"""
+
+    def __init__(self):
+        super().__init__()
+        member_id = None
+        password = None
+
+
+
+
+
 
 
 
